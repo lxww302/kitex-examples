@@ -31,12 +31,19 @@ func main() {
 		log.Fatal(err)
 	}
 	for {
-		req := &api.Request{Message: "my request"}
-		resp, err := client.Echo(context.Background(), req)
-		if err != nil {
-			log.Fatal(err)
-		}
-		log.Println(resp)
-		time.Sleep(time.Second)
+			req := &api.Request{Message: "my request"}
+			resp, err := client.Echo(context.Background(), req)
+			if err != nil {
+					log.Fatal(err)
+			}
+			log.Println(resp)
+			time.Sleep(time.Second)
+			addReq := &api.AddRequest{First: 512, Second: 512}
+			addResp, err := client.Add(context.Background(), addReq)
+			if err != nil {
+					log.Fatal(err)
+			}
+			log.Println(addResp)
+			time.Sleep(time.Second)
 	}
 }
